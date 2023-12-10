@@ -76,7 +76,7 @@ return {
     {
       "<leader>gd",
       function()
-        require("telescope.builtin").lsp_definitions()
+        require("telescope.builtin").lsp_type_definitions()
       end,
       desc = "Go to definition",
     },

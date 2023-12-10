@@ -1,8 +1,45 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local util = require("lspconfig.util")
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local function nullLsFormat(bufnr)
+  return function()
+    vim.lsp.buf.format({
+      async = false,
+      bufnr = bufnr,
+      filter = function(format_client)
+        return format_client.name == "null-ls"
+      end,
+    })
+  end
+end
+
+local function rustAnalyzerFormat(bufnr)
+  return function()
+    vim.lsp.buf.format({
+      async = false,
+      bufnr = bufnr,
+    })
+  end
+end
+
+local exceptions = {
+  ["rust_analyzer"] = rustAnalyzerFormat,
+}
+
 local opts = {
   capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = (exceptions[client.name] or nullLsFormat)(bufnr),
+      })
+    end
+  end,
 }
 
 require("mason-lspconfig").setup_handlers({

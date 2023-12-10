@@ -24,7 +24,7 @@ function M.add_dep(spec, config)
     local tbl = vim.tbl_extend("error", { spec }, other_args)
     return tbl
   else
-    return { spec, config = doConfig, lazy = not isColorscheme, priority = isColorscheme and 1000 or 50 }
+    return { spec, config = doConfig, priority = isColorscheme and 1000 or 50 }
   end
 end
 

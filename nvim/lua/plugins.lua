@@ -45,4 +45,6 @@ return {
   add_dep("Wansmer/treesj"),
   add_dep("monaqa/dial.nvim"),
   add_dep("folke/trouble.nvim"),
+
+  add_dep("theRealCarneiro/hyprland-vim-syntax"),
 }

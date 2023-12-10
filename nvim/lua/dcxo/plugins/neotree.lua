@@ -1,5 +1,8 @@
 return {
   opts = {
+    window = {
+      width = 25,
+    },
     sources = {
       "filesystem",
       "buffers",
