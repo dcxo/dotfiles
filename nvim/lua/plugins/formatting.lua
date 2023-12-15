@@ -1,4 +1,5 @@
 return {
+  "jay-babu/mason-null-ls.nvim",
   dependencies = {
     "nvimtools/none-ls.nvim",
     "williamboman/mason.nvim",
@@ -27,7 +28,7 @@ return {
               ".eslintrc.yaml",
               ".eslintrc.yml",
               ".eslintrc.json",
-            })
+            }) and not utils.root_has_file({ "biome.json", "deno.jsonc" })
           end,
         }),
         null_ls.builtins.formatting.prettier.with({
@@ -44,7 +45,7 @@ return {
               "prettier.config.js",
               "prettier.config.cjs",
               "package.json",
-            })
+            }) and not utils.root_has_file({ "biome.json", "deno.jsonc" })
           end,
         }),
         null_ls.builtins.formatting.deno_fmt.with({

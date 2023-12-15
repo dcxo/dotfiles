@@ -26,6 +26,9 @@ end
 
 local exceptions = {
   ["rust_analyzer"] = rustAnalyzerFormat,
+  ["typescript-tools"] = rustAnalyzerFormat,
+  ["jsonls"] = rustAnalyzerFormat,
+  ["astro"] = rustAnalyzerFormat,
 }
 
 local opts = {
@@ -44,12 +47,6 @@ local opts = {
 
 require("mason-lspconfig").setup_handlers({
   function(server_name)
-    if server_name == "tailwindcss" then
-      opts.on_attach = function(_, bufnr)
-        require("tailwindcss-colors").buf_attach(bufnr)
-      end
-    end
-
     require("lspconfig")[server_name].setup(opts)
   end,
   ["denols"] = function()

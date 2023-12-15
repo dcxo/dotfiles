@@ -1,4 +1,5 @@
 return {
+  "Shatur/neovim-session-manager",
   dependencies = { "nvim-neo-tree/neo-tree.nvim" },
   config = function()
     local config_group = vim.api.nvim_create_augroup("SessionManagerEvents", {}) -- A global group for all your config autocommands

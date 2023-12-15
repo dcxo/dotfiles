@@ -1,4 +1,5 @@
 return {
+  "nvim-lualine/lualine.nvim",
   opts = {
     extensions = { "neo-tree", "lazy", "mason" },
   },

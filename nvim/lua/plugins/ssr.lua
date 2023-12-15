@@ -1,4 +1,5 @@
 return {
+  "cshuaimin/ssr.nvim",
   opts = {
     border = "rounded",
     min_width = 50,

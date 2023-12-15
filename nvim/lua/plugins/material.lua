@@ -1,4 +1,5 @@
 return {
+  "marko-cerovac/material.nvim",
   opts = {
     styles = {},
     plugins = { -- Uncomment the plugins that you use to highlight them

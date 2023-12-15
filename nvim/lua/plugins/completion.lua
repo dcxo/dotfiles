@@ -1,4 +1,5 @@
 return {
+  "hrsh7th/nvim-cmp",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
@@ -10,7 +11,8 @@ return {
     "hrsh7th/cmp-nvim-lua",
     "windwp/nvim-autopairs",
     "hrsh7th/cmp-calc",
-    "js-everts/cmp-tailwind-colors",
+    -- "js-everts/cmp-tailwind-colors",
+    "hrsh7th/cmp-omni",
   },
   event = { "InsertEnter" },
   config = function()
@@ -18,12 +20,11 @@ return {
     local luasnip = require("luasnip")
 
     require("luasnip.loaders.from_vscode").lazy_load()
-    require("cmp-tailwind-colors").setup()
 
     local select_opts = { behavior = cmp.SelectBehavior.Select }
     cmp.setup({
       formatting = {
-        format = require("cmp-tailwind-colors").format,
+        -- format = require("cmp-tailwind-colors").format,
       },
       snippet = {
         expand = function(args)
@@ -80,6 +81,12 @@ return {
         { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lsp_document_symbol" },
+        {
+          name = "omni",
+          option = {
+            disable_omnifuncs = { "v:lua.vim.lsp.omnifunc" },
+          },
+        },
         { name = "nvim_lua" },
         { name = "vsnip" },
         { name = "path" },

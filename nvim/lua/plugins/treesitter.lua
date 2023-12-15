@@ -1,4 +1,5 @@
 return {
+  "nvim-treesitter/nvim-treesitter",
   events = { "BufReadPre", "BufNewFile", "SessionLoadPost" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
