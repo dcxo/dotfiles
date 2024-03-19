@@ -19,5 +19,6 @@
   home.packages = with pkgs; [
     stylua
     alejandra
+    lua51Packages.luacheck
   ];
 }

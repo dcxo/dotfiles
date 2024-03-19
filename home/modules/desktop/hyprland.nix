@@ -19,6 +19,9 @@ in {
   };
 
   config = {
+    home.packages = with pkgs; [
+      wl-clipboard-rs
+    ];
     wayland.windowManager.hyprland = {
       enable = config.hyprland.enable;
       systemd.enable = true;

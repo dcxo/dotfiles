@@ -8,11 +8,9 @@
     home.packages = [pkgs.neofetch];
     programs.fish = {
       enable = true;
-      shellInit = ''
-        function fish_greeting
-          neofetch
-        end
-      '';
+      functions = {
+        fish_greeting = "neofetch";
+      };
     };
   };
 }
